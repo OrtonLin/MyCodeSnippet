@@ -1,0 +1,36 @@
+{
+	"middlewareclass": {
+		"prefix": "middc",
+		"body": [
+		  "public class ${1:MiddlewareClass}",
+		  "{",
+		  "	private readonly RequestDelegate _next;",
+		  "	public ILogger<${1:MiddlewareClass}> _logger { get; set; }",
+		  "",
+		  "	public ${1:MiddlewareClass}(RequestDelegate next, ILogger<${1:MiddlewareClass}> logger)",
+		  "	{",
+		  "		_next = next;",
+		  "		_logger = logger;",
+		  "	}",
+		  "",
+		  "	public async Task Invoke(HttpContext context)",
+		  "	{",
+		  "		$0",
+		  "		await _next(context);",
+		  "	}",
+		  "}"
+		],
+		"description": "middlewareclass"
+	  },
+	  "middlewareExtension": {
+		"prefix": "middext",
+		"body": [
+		  "public static IApplicationBuilder Use${1:MiddlewareName}(this IApplicationBuilder builder)",
+		  "{",
+		  "	return builder.UseMiddleware<${1:MiddlewareName}Middleware>();",
+		  "}",
+		  "$0"
+		],
+		"description": "middlewareExtension"
+	  }
+}
