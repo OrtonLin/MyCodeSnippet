@@ -32,5 +32,29 @@
 		  "$0"
 		],
 		"description": "middlewareExtension"
+	  },
+	  "Core MVC Controller": {
+		"prefix": "coremvcc",
+		"body": [
+		  "using Microsoft.Extensions.Logging;",
+		  "using Microsoft.AspNetCore.Mvc;",
+		  "",
+		  "namespace ${2:NameSpace}.Controllers",
+		  "{",
+		  "    public class ${1:Name}Controller : Controller",
+		  "    {",
+		  "        private readonly ILogger<${1:Name}Controller> _logger;",
+		  "        public ConfigController(ILogger<${1:Name}Controller> logger)",
+		  "        {",
+		  "            _logger = logger;",
+		  "        }",
+		  "        public IActionResult Index()",
+		  "        {",
+		  "            return View();$0",
+		  "        }",
+		  "    }",
+		  "}"
+		],
+		"description": "Core MVC Controller"
 	  }
 }
